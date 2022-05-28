@@ -6,13 +6,15 @@
         1.1) feature vector
         1.2) label vector
 """
+import utils
+
 class DatasetHandler(object):
-    def __init__(self, df, target_column):
+    def __init__(self, dataset, target_column):
         """
         @args:
             df: Pandas Data Frame
         """
-        self.df = df
+        self.df = utils.read_csv(dataset)
         self.target_column = target_column
 
     def parse(self):
