@@ -9,6 +9,7 @@
 from sklearn.model_selection import train_test_split
 
 import utils
+from imputator import Imputer
 
 class DatasetHandler(object):
     def __init__(self, dataset, target_column, id_column=None, imputer=None):

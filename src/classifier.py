@@ -9,7 +9,6 @@ import itertools
 from sklearn.svm import SVC
 from sklearn.preprocessing import StandardScaler
 
-from imputator import Imputer
 from dataset_handler import DatasetHandler
 
 class Classifier(object):
