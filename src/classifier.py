@@ -48,14 +48,14 @@ class Classifier(object):
 
     def setup(self):
         data, labels = self.dataset_handler.parse()
-        X_train, X_test, y_train, y_test = \
+        X_train, X_val, y_train, y_val = \
                             self.dataset_handler.train_test_split(data, labels)
         if self.imputer != None:
             X_train, X_val = self.imputer.run(X_train, X_val)
         self.scaler.fit(X_train)
         X_train = self.scaler.transform(X_train)
-        X_test = self.scaler.transform(X_test)
-        return X_train, X_test, y_train, y_test
+        X_val = self.scaler.transform(X_val)
+        return X_train, X_val, y_train, y_val
 
     def define_scaler(self):
         scaler = StandardScaler()
