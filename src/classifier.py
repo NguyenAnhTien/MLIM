@@ -9,12 +9,13 @@ import itertools
 from sklearn.svm import SVC
 from sklearn.preprocessing import StandardScaler
 
+from imputator import Imputer
 from dataset_handler import DatasetHandler
 
 class Classifier(object):
-    def __init__(self, dataset, target, id_column=None):
+    def __init__(self, dataset, target, imputer=None, id_column=None):
         self.scaler = self.define_scaler()
-        self.dataset_handler = DatasetHandler(dataset, target, id_column)
+        self.imputer = imputer
 
     def run(self):
         X_train, X_val, y_train, y_val = self.setup()
@@ -37,6 +38,10 @@ class Classifier(object):
         return best_train_acc, best_val_acc
 
     def setup(self):
+        if self.imputer != None:
+            imputer = Imputer()
+            dataset = imputer.run()
+        self.dataset_handler = DatasetHandler(dataset, target, id_column)
         data, labels = self.dataset_handler.parse()
         X_train, X_test, y_train, y_test = \
                             self.dataset_handler.train_test_split(data, labels)
