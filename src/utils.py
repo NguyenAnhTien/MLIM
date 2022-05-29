@@ -7,8 +7,10 @@ import numpy
 
 import pandas
 
-def read_csv(file_name):
+def read_csv(file_name, drop_nan=False):
     df = pandas.read_csv(file_name)
+    if drop_nan:
+        df.dropna(inplace=True)
     return df
 
 def dump_csv(df, file_name):

@@ -12,14 +12,15 @@ import utils
 from imputator import Imputer
 
 class DatasetHandler(object):
-    def __init__(self, dataset, target_column, id_column=None):
+    def __init__(self, dataset, target_column, id_column=None, imputer=False):
         """
         @args:
             df: Pandas Data Frame
         """
-        self.df            = utils.read_csv(dataset)
+        self.df            = utils.read_csv(dataset, drop_nan=imputer)
         self.target_column = target_column
         self.id_column     = id_column
+        self.imputer       = imputer
 
     def parse(self):
         df = self.df.copy()
