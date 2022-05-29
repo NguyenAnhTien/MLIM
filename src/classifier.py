@@ -4,6 +4,8 @@
 @desc   :
     -)
 """
+import itertools
+
 from sklearn.svm import SVC
 from sklearn.preprocessing import StandardScaler
 
