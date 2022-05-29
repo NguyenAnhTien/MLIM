@@ -35,9 +35,9 @@ class Classifier(object):
         return best_train_acc, best_val_acc
 
     def setup(self):
-        self.dataset_handler.parse()
+        data, labels = self.dataset_handler.parse()
         X_train, X_test, y_train, y_test = \
-                                        self.dataset_handler.train_test_split()
+                            self.dataset_handler.train_test_split(data, labels)
         self.scaler.fit(X_train)
         X_train = self.scaler.transform(X_train)
         X_test = self.scaler.transform(X_test)
