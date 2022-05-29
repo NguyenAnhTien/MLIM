@@ -27,8 +27,6 @@ class Classifier(object):
         params = list(itertools.product(*[lrs, gammas]))
 
         X_train, X_val, y_train, y_val = self.setup()
-        if self.imputer != None:
-            X_train, X_val = self.imputer.run(X_train, X_val)
 
         print("#Train: ", X_train.shape[0])
         print("#Val: ", X_val.shape[0])
@@ -52,6 +50,8 @@ class Classifier(object):
         data, labels = self.dataset_handler.parse()
         X_train, X_test, y_train, y_test = \
                             self.dataset_handler.train_test_split(data, labels)
+        if self.imputer != None:
+            X_train, X_val = self.imputer.run(X_train, X_val)
         self.scaler.fit(X_train)
         X_train = self.scaler.transform(X_train)
         X_test = self.scaler.transform(X_test)
