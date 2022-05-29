@@ -21,9 +21,9 @@ class DatasetHandler(object):
         self.id_column     = id_column
 
     def parse(self):
+        df = self.df.copy()
         if self.id_column != None:
             df.drop(self.id_column, axis=1, inplace=True)
-        df = self.df.copy()
         labels = list(df[self.target_column])
         df.drop(self.target_column, axis=1, inplace=True)
         data = df.to_numpy()
