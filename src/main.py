@@ -16,6 +16,7 @@ def train_model(dataset, target, id_column=None):
 
 def mock_data(dataset, target_column, mock_file_name):
     mocker = Mocker()
+    dataset = utils.read_csv(dataset)
     df_mock = mocker.mock(dataset, target_column)
     utils.dump_csv(df_mock, mock_file_name)
 
