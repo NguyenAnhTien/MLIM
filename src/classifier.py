@@ -24,7 +24,7 @@ class Classifier(object):
         params = list(itertools.product(*[lrs, gammas]))
 
         X_train, X_val, y_train, y_val = self.setup()
-        X_train, X_test = self.imputer.run(X_train, X_test)
+        X_train, X_val = self.imputer.run(X_train, X_val)
         best_train_acc = 0
         best_val_acc = 0
         for param in list(params):
