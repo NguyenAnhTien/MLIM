@@ -2,6 +2,8 @@
 @author: Anh-Tien Nguyen
 @date  : 2022-05-24
 """
+import random
+import numpy
 
 import pandas
 
@@ -23,3 +25,7 @@ def get_df_num_columns(df):
 
 def convert_col_name_to_idx(df, column_name):
     return df.columns.get_loc(column_name)
+
+def set_seed():
+    random.seed(2022)
+    numpy.random.seed(2022)

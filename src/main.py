@@ -2,7 +2,6 @@
 @author: Anh-Tien Nguyen
 @date  : 2022-05-24
 """
-
 import utils
 import configs
 from mocker import Mocker
