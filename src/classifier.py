@@ -33,7 +33,7 @@ class Classifier(object):
             val_acc = model.score(X_val, y_val)
             if best_train_acc < train_acc and best_val_acc < val_acc:
                 best_train_acc = train_acc
-                best_val_acc = test_acc
+                best_val_acc = val_acc
         return best_train_acc, best_val_acc
 
     def setup(self):
