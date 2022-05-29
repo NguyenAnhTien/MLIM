@@ -1,17 +1,18 @@
 """
 @author: Anh-Tien Nguyen
-@date: 2022-05-24
+@date  : 2022-05-24
 """
 
 import utils
 import configs
 from mocker import Mocker
+from classifier import Classifier
 from dataset_handler import DatasetHandler
 
+def train_model(dataset, target):
+    classifier = Classifier(dataset, target)
+    train_acc, val_acc = classifier.run()
+    print(f"TRAIN ACC: {train_acc} - VAL ACC: {val_acc}")
+
 if __name__ == '__main__':
-    # mocker = Mocker()
-    # df = utils.read_csv(configs.PARKS)
-    # mock_df = mocker.mock(df, target_column='status')
-    # utils.dump_csv(mock_df, configs.MOCK_PARKS)
-    dataset_handler = DatasetHandler(configs.PARKS, configs.PARKS_TARGET)
-    data, labels = dataset_handler.parse()
+    train_model(configs.PARKS, configs.PARKS_TARGET)

@@ -6,6 +6,8 @@
         1.1) feature vector
         1.2) label vector
 """
+from sklearn.model_selection import train_test_split
+
 import utils
 
 class DatasetHandler(object):
@@ -23,3 +25,8 @@ class DatasetHandler(object):
         df.drop(self.target_column, axis=1, inplace=True)
         data = df.to_numpy()
         return data, labels
+
+    def train_test_split(self, data, labels):
+        X_train, X_test, y_train, y_test = train_test_split(data, labels,\
+                                            test_size=0.33, random_state=2022)
+        return X_train, X_test, y_train, y_test
