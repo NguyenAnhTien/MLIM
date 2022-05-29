@@ -9,6 +9,7 @@ import pandas
 
 def read_csv(file_name, drop_nan=False):
     df = pandas.read_csv(file_name, na_filter=False, keep_default_na=False)
+    df = df.apply(pandas.to_numeric, errors='coerce')
     if drop_nan:
         df.dropna(inplace=True)
     return df

@@ -17,7 +17,7 @@ class Classifier(object):
         self.imputer = None
         if imputer:
             self.dataset_handler = DatasetHandler(dataset, target,\
-                                                    id_column, imputer=imputer)
+                                                    id_column, imputer=(not imputer))
             self.imputer = Imputer()
         self.scaler = self.define_scaler()
 
