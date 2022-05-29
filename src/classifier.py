@@ -12,7 +12,7 @@ from sklearn.preprocessing import StandardScaler
 from dataset_handler import DatasetHandler
 
 class Classifier(object):
-    def __init__(self, dataset, target, imputer=None, id_column=None):
+    def __init__(self, dataset, target, id_column=None, imputer=None):
         self.scaler = self.define_scaler()
         self.dataset_handler = DatasetHandler(dataset, target, id_column, imputer)
 

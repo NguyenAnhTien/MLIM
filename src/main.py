@@ -10,7 +10,7 @@ from classifier import Classifier
 from dataset_handler import DatasetHandler
 
 def train_model(dataset, target, id_column=None):
-    classifier = Classifier(dataset, target, id_column)
+    classifier = Classifier(dataset, target, id_column, imputer='Mean')
     train_acc, val_acc = classifier.run()
     print(f"TRAIN ACC: {train_acc} - VAL ACC: {val_acc}")
 
