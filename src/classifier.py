@@ -16,9 +16,9 @@ class Classifier(object):
     def __init__(self, dataset, target, imputer=None, id_column=None):
         self.scaler = self.define_scaler()
         self.imputer = imputer
+        X_train, X_val, y_train, y_val = self.setup(dataset)
 
     def run(self):
-        X_train, X_val, y_train, y_val = self.setup()
         lrs = [0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
         gammas = [0.0001, 0.001, 0.01, 0.1, 0.09, 0.009, 0.0009, 0.08, 0.008, 0.0008, 0.06, 0.006, 0.0006]
         params = list(itertools.product(*[lrs, gammas]))
@@ -37,7 +37,7 @@ class Classifier(object):
                 best_val_acc = val_acc
         return best_train_acc, best_val_acc
 
-    def setup(self):
+    def setup(self, dataset):
         if self.imputer != None:
             imputer = Imputer()
             dataset = imputer.run(dataset)
