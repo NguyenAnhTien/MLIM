@@ -30,8 +30,8 @@ class Classifier(object):
         if self.imputer != None:
             X_train, X_val = self.imputer.run(X_train, X_val)
 
-        print("#Train: ", X_train.shape[0], X_train.shape[1])
-        print("#Val: ", X_val.shape[0], X_val.shape[1])
+        print("#Train: ", X_train.shape[0])
+        print("#Val: ", X_val.shape[0])
 
         best_train_acc = 0
         best_val_acc = 0
