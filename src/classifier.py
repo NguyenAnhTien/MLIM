@@ -38,9 +38,6 @@ class Classifier(object):
         return best_train_acc, best_val_acc
 
     def setup(self, dataset):
-        if self.imputer != None:
-            imputer = Imputer()
-            dataset = imputer.run(dataset)
         self.dataset_handler = DatasetHandler(dataset, target, id_column)
         data, labels = self.dataset_handler.parse()
         X_train, X_test, y_train, y_test = \
