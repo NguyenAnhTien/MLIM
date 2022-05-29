@@ -8,7 +8,7 @@ import numpy
 import pandas
 
 def read_csv(file_name, drop_nan=False):
-    df = pandas.read_csv(file_name, na_filter=False)
+    df = pandas.read_csv(file_name, na_filter=False, keep_default_na=False)
     if drop_nan:
         df.dropna(inplace=True)
     return df
