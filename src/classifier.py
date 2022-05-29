@@ -10,9 +10,9 @@ from sklearn.preprocessing import StandardScaler
 from dataset_handler import DatasetHandler
 
 class Classifier(object):
-    def __init__(self, dataset, target):
+    def __init__(self, dataset, target, id_column=None):
         self.scaler = self.define_scaler()
-        self.dataset_handler = DatasetHandler(dataset, target)
+        self.dataset_handler = DatasetHandler(dataset, target, id_column)
 
     def run(self):
         X_train, X_val, y_train, y_val = self.setup()
