@@ -11,8 +11,6 @@ from dataset_handler import DatasetHandler
 
 class Classifier(object):
     def __init__(self, dataset, target):
-        self.data = data
-        self.labels = labels
         self.scaler = self.define_scaler()
         self.model = self.define_model()
         self.dataset_handler = DatasetHandler(dataset, target)
