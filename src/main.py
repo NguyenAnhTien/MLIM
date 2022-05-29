@@ -15,4 +15,4 @@ def train_model(dataset, target, id_column=None):
     print(f"TRAIN ACC: {train_acc} - VAL ACC: {val_acc}")
 
 if __name__ == '__main__':
-    train_model(configs.PARKS, configs.PARKS_TARGET, configs.PARKS_ID_COLUMN)
+    train_model(configs.MOCK_PARKS, configs.PARKS_TARGET, configs.PARKS_ID_COLUMN)
