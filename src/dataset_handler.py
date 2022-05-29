@@ -11,14 +11,14 @@ from sklearn.model_selection import train_test_split
 import utils
 
 class DatasetHandler(object):
-    def __init__(self, dataset, target_column, id_column):
+    def __init__(self, dataset, target_column, id_column=None):
         """
         @args:
             df: Pandas Data Frame
         """
-        self.df = utils.read_csv(dataset)
+        self.df            = utils.read_csv(dataset)
         self.target_column = target_column
-        self.id_column = None
+        self.id_column     = id_column
 
     def parse(self):
         if self.id_column != None:
