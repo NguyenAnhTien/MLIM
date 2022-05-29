@@ -12,7 +12,7 @@ import utils
 from imputator import Imputer
 
 class DatasetHandler(object):
-    def __init__(self, dataset, target_column, id_column=None, imputer=None):
+    def __init__(self, dataset, target_column, id_column=None):
         """
         @args:
             df: Pandas Data Frame
@@ -20,7 +20,6 @@ class DatasetHandler(object):
         self.df            = utils.read_csv(dataset)
         self.target_column = target_column
         self.id_column     = id_column
-        self.imputer       = imputer
 
     def parse(self):
         df = self.df.copy()
@@ -28,9 +27,6 @@ class DatasetHandler(object):
             df.drop(self.id_column, axis=1, inplace=True)
         labels = list(df[self.target_column])
         df.drop(self.target_column, axis=1, inplace=True)
-        if self.imputer != None:
-            imputer = Imputer()
-            df = imputer.run(df)
         data = df.to_numpy()
         return data, labels
 
